@@ -245,4 +245,183 @@ x = 5  # العمليات المنطقية
 print(x < 5 and x < 10)  # False
 print(x < 5 or x < 10)   # True
 print(not(x < 5 and x < 10))  # True
+```
+### 5. مشغلات الهوية في بايثون
 
+**المقدمة:**
+مشغلات الهوية تُستخدم لمقارنة الكائنات للتحقق مما إذا كانت تشير إلى نفس الموقع في الذاكرة.
+
+**مشغلات الهوية:**
+
+- **is:** يتحقق مما إذا كان المتغيران هما نفس الكائن.
+    ```python
+    x = ["apple", "banana"]
+    y = ["apple", "banana"]
+    z = x
+
+    print(x is z)  # Returns True because z is the same object as x
+
+    print(x is y)  # Returns False because x is not the same object as y, even if they have the same content
+
+    print(x == y)  # Returns True because x is equal to y
+    ```
+
+- **is not:** يتحقق مما إذا كان المتغيران ليسا نفس الكائن.
+    ```python
+    x = ["apple", "banana"]
+    y = ["apple", "banana"]
+    z = x
+
+    print(x is not z)  # Returns False because z is the same object as x
+
+    print(x is not y)  # Returns True because x is not the same object as y
+
+    print(x != y)  # Returns False because x is equal to y
+    ```
+
+### 6. مشغلات العضوية في بايثون
+
+**المقدمة:**
+مشغلات العضوية تُستخدم لاختبار ما إذا كانت سلسلة معينة موجودة في كائن.
+
+**مشغلات العضوية:**
+
+- **in:** يتحقق مما إذا كانت السلسلة موجودة في الكائن.
+    ```python
+    fruits = ["apple", "banana", "cherry"]
+
+    print("banana" in fruits)  # Returns True because "banana" is in the list
+
+    print("orange" in fruits)  # Returns False because "orange" is not in the list
+    ```
+
+- **not in:** يتحقق مما إذا كانت السلسلة غير موجودة في الكائن.
+    ```python
+    fruits = ["apple", "banana", "cherry"]
+
+    print("banana" not in fruits)  # Returns False because "banana" is in the list
+
+    print("orange" not in fruits)  # Returns True because "orange" is not in the list
+    ```
+
+### 7. مشغلات البت في بايثون
+
+**المقدمة:**
+مشغلات البت تُستخدم لمقارنة الأرقام الثنائية.
+
+**مشغلات البت:**
+
+- **AND (&):** يحدد كل بت إلى 1 إذا كانت كل البتات 1.
+    ```python
+    x = 5  # 0101 in binary
+    y = 3  # 0011 in binary
+
+    print(x & y)  # 1 (0001 in binary)
+    ```
+
+- **OR (|):** يحدد كل بت إلى 1 إذا كانت واحدة من البتات 1.
+    ```python
+    x = 5  # 0101 in binary
+    y = 3  # 0011 in binary
+
+    print(x | y)  # 7 (0111 in binary)
+    ```
+
+- **XOR (^):** يحدد كل بت إلى 1 إذا كانت واحدة فقط من البتات 1.
+    ```python
+    x = 5  # 0101 in binary
+    y = 3  # 0011 in binary
+
+    print(x ^ y)  # 6 (0110 in binary)
+    ```
+
+- **NOT (~):** يعكس كل البتات.
+    ```python
+    x = 5  # 0101 in binary
+
+    print(~x)  # -6 (inverts all bits)
+    ```
+
+- **Zero fill left shift (<<):** يُزاح إلى اليسار بملء الأصفار من اليمين.
+    ```python
+    x = 5  # 0101 in binary
+
+    print(x << 2)  # 20 (10100 in binary)
+    ```
+
+- **Signed right shift (>>):** يُزاح إلى اليمين بدفع نسخ من البت الأيسر من اليسار.
+    ```python
+    x = 5  # 0101 in binary
+
+    print(x >> 2)  # 1 (0001 in binary)
+    ```
+
+### أولوية العمليات في بايثون
+
+**المقدمة:**
+أولوية العمليات تحدد الترتيب الذي تُنفذ به العمليات المختلفة في تعبير ما، مما يضمن تنفيذ العمليات بالتسلسل الصحيح للحصول على النتيجة المتوقعة.
+
+**أمثلة:**
+
+1. **الأقواس:** لها الأولوية القصوى، التعبيرات داخل الأقواس تُقيم أولاً.
+    ```python
+    print((6 + 3) - (6 + 3))  # الناتج: 0
+    ```
+
+2. **الضرب مقابل الجمع:** الضرب له أولوية أعلى من الجمع، لذا يُقيم أولاً.
+    ```python
+    print(100 + 5 * 3)  # الناتج: 115
+    ```
+
+**ترتيب الأولوية:**
+
+من الأعلى إلى الأدنى:
+
+1. **()**: الأقواس
+2. **\*\***: الأس
+3. **+x, -x, ~x**: الجمع الأحادي، الطرح الأحادي، NOT البت
+4. **\*, /, //, %**: الضرب، القسمة، القسمة الأرضية، باقي القسمة
+5. **+, -**: الجمع، الطرح
+6. **<<, >>**: إزاحة البت لليسار ولليمين
+7. **&**: AND البت
+8. **^**: XOR البت
+9. **|**: OR البت
+10. **==, !=, >, >=, <, <=, is, is not, in, not in**: عمليات المقارنة، الهوية، العضوية
+11. **not**: NOT المنطقي
+12. **and**: AND المنطقي
+13. **or**: OR المنطقي
+
+**التقييم من اليسار إلى اليمين:**
+إذا كانت العمليات في نفس المستوى، تُقيم من اليسار إلى اليمين.
+
+**أمثلة عملية:**
+
+```python
+print(5 == 4 + 1)    # "مثل" مقارنة لها أولوية أقل من الجمع، لذا نحتاج لحساب الجمع أولاً.
+# it reads: 5 == 5 = True 
+
+print(not 5 == 5)    # "ليس" المنطقي له أولوية أقل من "مثل" مقارنة، لذا نحتاج لحساب المقارنة أولاً.
+
+# it reads: not True = False    # الأقواس لها الأولوية، لذا نحتاج لحساب ما داخل الأقواس أولاً.
+
+
+print((6 + 3) * (6 - 3))
+# it reads: (9) * (3) = 27
+
+print(2 ** 3 * 2)    # الأس له أولوية أعلى من الضرب، لذا يُحسب أولاً.
+# it reads: 8 * 2 = 16
+
+print(-5 + 2)    # الطرح الأحادي له أولوية أعلى من الجمع.
+# it reads: -5 + 2 = -3
+
+print(10 // 3 % 2)    # القسمة الأرضية لها نفس أولوية باقي القسمة، تُقيم من اليسار إلى اليمين.
+# it reads: (10 // 3) % 2 = 1
+
+print(5 & 3 | 2)    # AND البت له أولوية أعلى من OR البت.
+# it reads: (5 & 3) | 2 = 1 | 2 = 3
+
+print(5 > 3 and 4 < 2)    # عمليات المقارنة لها أولوية أعلى من AND المنطقي.
+# it reads: (True and False) = False
+```
+
+باتباع هذا الترتيب، تضمن بايثون تقييم التعبيرات بشكل صحيح ومتسق.
